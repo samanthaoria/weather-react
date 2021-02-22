@@ -1,9 +1,9 @@
-import { BottomPage } from "../components/bottom-page/BottomPage";
-import { CurrentHighLow } from "../components/current-high-low/CurrentHighLow";
-import { CurrentItems } from "../components/current-items/CurrentItems";
-import { PrecipitationWind } from "../components/precipitation-wind/PrecipitationWind";
-import { WindHumidity } from "../components/wind-humidity/WindHumidity";
-import { DataContainer } from "../components/data-container/DataContainer";
+import { BottomPage } from "../bottom-page/BottomPage";
+import { CurrentHighLow } from "../current-high-low/CurrentHighLow";
+import { CurrentItems } from "../current-items/CurrentItems";
+import { PrecipitationWind } from "../precipitation-wind/PrecipitationWind";
+import { WindHumidity } from "../wind-humidity/WindHumidity";
+import { DataContainer } from "../data-container/DataContainer";
 // import "./styles.css";
 
 export const App = () => {

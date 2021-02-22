@@ -1,14 +1,12 @@
+import logo from "./logo.svg";
+import "./App.css";
 
-import logo from './logo.svg';
-import './App.css';
-
-
-import { BottomPage } from "../components/bottom-page/BottomPage";
-import { CurrentHighLow } from "../components/current-high-low/CurrentHighLow";
-import { CurrentItems } from "../components/current-items/CurrentItems";
-import { PrecipitationWind } from "../components/precipitation-wind/PrecipitationWind";
-import { WindHumidity } from "../components/wind-humidity/WindHumidity";
-import { DataContainer } from "../components/data-container/DataContainer";
+import { CurrentHighLow } from "./components/current-high-low/CurrentHighLow";
+import { CurrentItems } from "./components/current-items/CurrentItems";
+import { PrecipitationWind } from "./components/precipitation-wind/PrecipitationWind";
+import { WindHumidity } from "./components/wind-humidity/WindHumidity";
+import { DataContainer } from "./components/data-container/DataContainer";
+import { BottomPage } from "./components/bottom-page/BottomPage";
 // import "./styles.css";
 
 export default function App() {
@@ -34,24 +32,7 @@ export default function App() {
       </div>
     </div>
   );
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 // import logo from './logo.svg';
 // import './App.css';
