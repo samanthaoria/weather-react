@@ -36,18 +36,9 @@ h2 {
 }
 
 .btn-primary {
-  margin: 0;
-}
-
-.btn-current {
-  margin: 0;
+  margin: 10px;
+  color: #fff;
   background-color: #2a73d3;
-  color: #fff;
-}
-
-.btn-current:hover {
-  color: #fff;
-  background-color: #057bfe;
 }
 
 .degrees-currentdaytogether {
@@ -209,4 +200,3 @@ h2 {
 .light-blue {
   color: #2a73d3;
 }
-

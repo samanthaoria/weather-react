@@ -1,4 +1,12 @@
 .current-button {
   float: right;
   display: block;
+  margin: 10px;
+  background-color: #2a73d3;
+  color: #fff;
+}
+
+.current-button:hover {
+  color: #fff;
+  background-color: #057bfe;
 }
