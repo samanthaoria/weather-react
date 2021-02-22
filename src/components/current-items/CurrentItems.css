@@ -1,0 +1,25 @@
+.day-current-temp {
+  text-align: center;
+  font-family: "PT Serif", serif;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+.current-temperature {
+  text-align: left;
+  font-size: 50px;
+  font-family: "PT Serif", serif;
+  color: #235493;
+  font-style: italic;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.current-temperature .active {
+  color: #235493;
+  cursor: default;
+}
+
+.current-temperature .active:hover {
+  text-decoration: none;
+}

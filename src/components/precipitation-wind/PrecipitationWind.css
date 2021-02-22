@@ -1,0 +1,25 @@
+.wind-humidity {
+  color: #235493;
+  list-style: none;
+  font-family: "PT Serif", serif;
+  text-align: right;
+  margin-top: -140px;
+}
+
+.sky-condition {
+  margin-right: -30px;
+  font-family: "PT Serif", serif;
+}
+
+.result-sky-condition {
+  color: #2a73d3;
+  margin-left: 30px;
+}
+
+.precipitation-adjust {
+  margin-right: 6px;
+}
+
+.humidity-adjust {
+  margin-right: 6px;
+}
