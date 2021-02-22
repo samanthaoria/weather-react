@@ -1,7 +1,7 @@
 h1 {
   text-align: left;
   margin-left: 10px;
-  margin-top: 20px;
+  margin-top: 40px;
   font-family: "Sansita Swashed", cursive;
   color: #235493;
   width: 50%;
@@ -32,7 +32,7 @@ h2 {
 }
 
 .data-container {
-  margin-top: -15px;
+  margin-top: 30px;
 }
 
 .btn-primary {
@@ -91,6 +91,7 @@ h2 {
 
 .img-forecast {
   margin-left: -15px;
+  margin-top: -18px;
 }
 
 .next-temperature {
@@ -179,7 +180,7 @@ h2 {
 }
 
 .link-git {
-  margin-left: -300px;
+  margin-left: -850px;
   font-size: 15px;
   font-family: "PT Sans", sans-serif;
   color: #235493;
