@@ -1,11 +1,13 @@
 import React from "react";
 
-export const CurrentItems = () => (
+export const CurrentItems = (props) => (
+
   <div className="current-temperature" id="current-temperature">
     <p>
       <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" />
       <span className="temperature-value" id="temperature-value">
-        {" 30 "}
+        
+        {Math.round(props.temp)}
       </span>
       <span className="units">
         <a href="/" id="link-celsius" className="active">

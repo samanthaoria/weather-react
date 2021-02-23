@@ -9,5 +9,6 @@ export const CityInput = () => (
     autocomplete="off"
     className="city-input"
     id="city-search"
+    autoFocus="on"
   />
 );

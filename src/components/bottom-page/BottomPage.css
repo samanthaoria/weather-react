@@ -1,14 +1,15 @@
 .align-link {
   margin: 0 auto;
+  max-width: 600%;
 }
 
 .link-git {
   margin-left: 420px;
-  font-size: 15px;
   font-family: "PT Sans", sans-serif;
   color: #235493;
 }
 
 .name-after-git {
   color: #2a73d3;
+  font-size: 12px;
 }

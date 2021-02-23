@@ -1,6 +1,6 @@
 import React from "react";
 
-export const PrecipitationWind = () => (
+export const PrecipitationWind = (props) => (
   <>
     <li>
       <div className="precipitation">
@@ -8,15 +8,17 @@ export const PrecipitationWind = () => (
         Precipitation:
         <span className="italic bold light-blue" id="precipitation-probality">
           {" "}
-          65%
+          {props.rain} %
         </span>
       </div>
     </li>
     <li>
       <div className="wind-adjust">
-        <i className="fas fa-wind"></i> Wind:
+        <i className="fas fa-wind"></i> Wind: {" "}
         <span className="italic bold light-blue">
-          <span id="wind"> 4</span> km/h
+          <span id="wind-wind"> 
+          {Math.round(props.wind)} 
+          </span> km/h
         </span>
       </div>
     </li>

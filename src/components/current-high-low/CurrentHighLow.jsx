@@ -1,6 +1,6 @@
 import React from "react";
 
-export const CurrentHighLow = () => (
+export const CurrentHighLow = (props) => (
   <li>
     <div className="current-high-low" id="current-high-low">
       <i className="fas fa-long-arrow-alt-up"></i>
@@ -10,13 +10,13 @@ export const CurrentHighLow = () => (
         H:{" "}
       </span>
       <span className="italic bold light-blue" id="current-high">
-        {"32ºC  "}
+        {Math.round(props.hightemp)}°C
       </span>
       <span className="l-low-temp italic bold" id="l-low-temp">
-        L:{""}
+        L:{" "}
       </span>
       <span className="italic bold light-blue" id="current-low">
-        {" 28ºC "}
+        {Math.round(props.lowtemp)}°C
       </span>
     </div>
   </li>
