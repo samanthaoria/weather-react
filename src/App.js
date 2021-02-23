@@ -15,23 +15,26 @@ export default function App() {
   const [temperature, setTemperature] = useState(null);
   const [city, setCity] = useState("Amsterdam");
   const [wind, setWind] = useState("null");
-  const [precipitation, setPrecipitation] = useState("null");
+  const [humidity, setHumidity] = useState("null");
   const [sky, setSky] = useState("null");
   const [feelslike, setFeelsLike] = useState("null");
   const [highTemp, setHighTemp] = useState("null");
   const [lowTemp, setLowTemp] = useState("null");
-  
+  const [image, setImage] = useState("null");
+  const [date, setDate] = useState("null");
 
   function handleResponse(response) {
     setTemperature(response.data.main.temp);
     setCity(response.data.name);
     setWind(response.data.wind.speed);
-    setPrecipitation(response.data.main.humidity);
-    setSky(response.data.weather.[0].main);
+    setHumidity(response.data.main.humidity);
+    setSky(response.data.weather[0].main);
     setFeelsLike(response.data.main.feels_like);
-    setHighTemp(response.data.main.temp_max)
+    setHighTemp(response.data.main.temp_max);
     setLowTemp(response.data.main.temp_min);
-    
+    setImage(response.data.weather[0].icon);
+    setDate(response.data.main);
+
     setReady(true);
     console.log(response.data);
   }
@@ -45,13 +48,13 @@ export default function App() {
             <h1 id="city"> {city} </h1>
             <div className="degrees-currentdaytogether">
               <h2 className="light-blue italic"> </h2>
-              <CurrentItems temp={temperature} />
+              <CurrentItems temp={temperature} image={image} />
             </div>
             <ul className="wind-humidity">
               <div className="bold italic">
                 <WindHumidity skycondition={sky} feelslike={feelslike} />
                 <CurrentHighLow hightemp={highTemp} lowtemp={lowTemp} />
-                <PrecipitationWind rain={precipitation} wind={wind} />
+                <PrecipitationWind humidity={humidity} wind={wind} />
               </div>
             </ul>
           </div>

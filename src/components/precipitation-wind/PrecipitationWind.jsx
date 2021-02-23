@@ -3,12 +3,12 @@ import React from "react";
 export const PrecipitationWind = (props) => (
   <>
     <li>
-      <div className="precipitation">
+      <div className="humidity">
         <i className="fas fa-cloud-rain"></i>
-        Precipitation:
+        Humidity:
         <span className="italic bold light-blue" id="precipitation-probality">
           {" "}
-          {props.rain} %
+          {props.humidity} %
         </span>
       </div>
     </li>
