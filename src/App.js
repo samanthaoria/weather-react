@@ -1,27 +1,28 @@
 import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import FormattedDate from "./components/formatted-date/FormattedDate";
 
 import { CurrentHighLow } from "./components/current-high-low/CurrentHighLow";
 import { CurrentItems } from "./components/current-items/CurrentItems";
 import { PrecipitationWind } from "./components/precipitation-wind/PrecipitationWind";
 import { WindHumidity } from "./components/wind-humidity/WindHumidity";
-import { DataContainer } from "./components/data-container/DataContainer";
+import { FormContainer } from "./components/form-container/FormContainer";
 import { BottomPage } from "./components/bottom-page/BottomPage";
 
-export default function App() {
-  const [ready, setReady] = useState(false);
+export default function App(props) {
+  // const [ready, setReady] = useState(false);
   const [temperature, setTemperature] = useState(null);
   const [city, setCity] = useState("Amsterdam");
   const [wind, setWind] = useState("null");
   const [humidity, setHumidity] = useState("null");
   const [sky, setSky] = useState("null");
-  const [feelslike, setFeelsLike] = useState("null");
-  const [highTemp, setHighTemp] = useState("null");
-  const [lowTemp, setLowTemp] = useState("null");
-  const [image, setImage] = useState("null");
-  const [date, setDate] = useState("null");
+  const [feelslike, setFeelsLike] = useState(0);
+  const [highTemp, setHighTemp] = useState(0);
+  const [lowTemp, setLowTemp] = useState(0);
+  const [image, setImage] = useState();
+  const [date, setDate] = useState();
 
   function handleResponse(response) {
     setTemperature(response.data.main.temp);
@@ -32,22 +33,40 @@ export default function App() {
     setFeelsLike(response.data.main.feels_like);
     setHighTemp(response.data.main.temp_max);
     setLowTemp(response.data.main.temp_min);
-    setImage(response.data.weather[0].icon);
-    setDate(response.data.main);
+    setImage(`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    setDate(new Date());
 
-    setReady(true);
+
+    // setReady(true);
     console.log(response.data);
   }
 
-  if (ready) {
+  function search(city) {
+    const apiKey = "d09585e76f8833f9d740d8b7cf3fe689";
+    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  useEffect(() => {
+    search(city);
+  }, [city]);
+
+  useEffect(() => {
+    search(city);
+  }, []);
+
+  if (date) {
     return (
       <div className="App">
         <div className="container">
-          <DataContainer />
-          <div className="data-container">
+          <FormContainer onCityChange={setCity} />
+          <div className="form-container">
             <h1 id="city"> {city} </h1>
             <div className="degrees-currentdaytogether">
-              <h2 className="light-blue italic"> </h2>
+              <h2 className="light-blue italic">
+                {" "}
+                <FormattedDate date={date} />{" "}
+              </h2>
               <CurrentItems temp={temperature} image={image} />
             </div>
             <ul className="wind-humidity">
@@ -65,10 +84,6 @@ export default function App() {
       </div>
     );
   } else {
-    const apiKey = "d09585e76f8833f9d740d8b7cf3fe689";
-    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
-    return "Loading...";
+    return null;
   }
 }

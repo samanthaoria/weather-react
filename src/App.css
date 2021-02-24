@@ -79,6 +79,11 @@ h2 {
   vertical-align: top;
 }
 
+.currentIcon{
+  margin-top: -18px;
+  margin-left: -25px;
+}
+
 .units {
   position: relative;
   top: -15px;

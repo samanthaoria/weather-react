@@ -5,7 +5,7 @@ export const CurrentItems = (props) => (
   <div className="current-temperature" id="current-temperature">
     <div className="currentdate"> {props.date} </div>
     <p>
-      <img src={props.image}/>
+      <img className="currentIcon" src={props.image}/>
       <span className="temperature-value" id="temperature-value">
         
         {Math.round(props.temp)}
