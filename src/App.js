@@ -11,6 +11,8 @@ import { WindHumidity } from "./components/wind-humidity/WindHumidity";
 import { FormContainer } from "./components/form-container/FormContainer";
 import { BottomPage } from "./components/bottom-page/BottomPage";
 
+
+
 export default function App(props) {
   // const [ready, setReady] = useState(false);
   const [temperature, setTemperature] = useState(null);
@@ -23,6 +25,8 @@ export default function App(props) {
   const [lowTemp, setLowTemp] = useState(0);
   const [image, setImage] = useState();
   const [date, setDate] = useState();
+  const [celsius, setCelsius] = useState();
+  const [fahrenheit, setFahrenheit] = useState();
 
   function handleResponse(response) {
     setTemperature(response.data.main.temp);
@@ -33,7 +37,9 @@ export default function App(props) {
     setFeelsLike(response.data.main.feels_like);
     setHighTemp(response.data.main.temp_max);
     setLowTemp(response.data.main.temp_min);
-    setImage(`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    setImage(response.data.weather[0].icon);
+    setCelsius(response.data.main.temp);
+    setFahrenheit((response.data.main.temp) * 9 / 5 + 32);
     setDate(new Date());
 
 
@@ -67,7 +73,7 @@ export default function App(props) {
                 {" "}
                 <FormattedDate date={date} />{" "}
               </h2>
-              <CurrentItems temp={temperature} image={image} />
+              <CurrentItems image={image} temp={temperature} celsius={celsius} fahrenheit={fahrenheit} />
             </div>
             <ul className="wind-humidity">
               <div className="bold italic">
