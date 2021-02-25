@@ -15,7 +15,7 @@ import { BottomPage } from "./components/bottom-page/BottomPage";
 
 export default function App(props) {
   // const [ready, setReady] = useState(false);
-  const [temperature, setTemperature] = useState(null);
+  const [temperature, setTemperature] = useState(0);
   const [city, setCity] = useState("Amsterdam");
   const [wind, setWind] = useState("null");
   const [humidity, setHumidity] = useState("null");
@@ -24,9 +24,9 @@ export default function App(props) {
   const [highTemp, setHighTemp] = useState(0);
   const [lowTemp, setLowTemp] = useState(0);
   const [image, setImage] = useState();
-  const [date, setDate] = useState();
-  const [celsius, setCelsius] = useState();
-  const [fahrenheit, setFahrenheit] = useState();
+  const [date, setDate] = useState(0);
+  const [celsius, setCelsius] = useState(0);
+  const [fahrenheit, setFahrenheit] = useState(0);
 
   function handleResponse(response) {
     setTemperature(response.data.main.temp);
@@ -73,7 +73,7 @@ export default function App(props) {
                 {" "}
                 <FormattedDate date={date} />{" "}
               </h2>
-              <CurrentItems image={image} temp={temperature} celsius={celsius} fahrenheit={fahrenheit} />
+              <CurrentItems image={image} temperature={temperature} celsius={celsius} fahrenheit={fahrenheit} />
             </div>
             <ul className="wind-humidity">
               <div className="bold italic">

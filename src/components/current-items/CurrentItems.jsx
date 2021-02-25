@@ -27,18 +27,20 @@ export const CurrentItems = (props) => (
   <div className="current-temperature" id="current-temperature">
     <div className="currentdate"> {props.date} </div>
 
-  
-      <span className="currentIcon">
-        {" "}
-        <ReactAnimatedWeather
-          icon={codeMapping[props.image]}
-          color="#3478d4"
-          size={50}
-          animate={true}
-        />{" "}
-      </span>
+    <span className="currentIcon">
+      {" "}
+      <ReactAnimatedWeather
+        icon={codeMapping[props.image]}
+        color="#3478d4"
+        size={50}
+        animate={true}
+      />{" "}
+    </span>
 
-      <WeatherUnit />
-    
+    <WeatherUnit
+      temperature={props.temperature}
+      celsius={props.celsius}
+      fahrenheit={props.fahrenheit}
+    />
   </div>
 );
