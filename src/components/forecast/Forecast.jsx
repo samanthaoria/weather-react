@@ -13,7 +13,7 @@ export const Forecast = (props) => {
 
   useEffect(() => {
     const apiKey = "a1244480e7949adfd659149b4a160e1f";
-    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${props.city}&appid=${apiKey}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${props.city}&appid=${apiKey}&units=metric`;
     axios.get(url).then(handleForecastResponse);
   }, [props.city]);
 

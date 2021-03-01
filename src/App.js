@@ -51,7 +51,7 @@ export default function App() {
   }
 
   function searchByLatLong(lat, long) {
-    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then((response) => {
       setCity(response.data.name);
       handleResponse(response);
@@ -60,7 +60,7 @@ export default function App() {
 
   function searchByCity(city) {
     setCity(city);
-    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
 
