@@ -1,5 +1,20 @@
-.form-group {
-  display: inline-block;
+.city-form-group {
+  display: flex;
+  align-items: baseline;
   width: 100%;
+  margin-top: 1rem;
+  padding: 0 10px 0 10px;
   
+}
+
+.city-input {
+  flex: 1;
+}
+
+.btn-primary {
+  margin: 10px;
+  color: #fff;
+  background-color: #2a73d3;
+  display: flex;
+  align-items: baseline;
 }

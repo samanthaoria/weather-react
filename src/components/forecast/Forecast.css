@@ -1,0 +1,11 @@
+.forecast-icon {
+  display: block; 
+ margin-top: 10px 0;
+  color: #235493; 
+}
+
+.next-temperature {
+  color: #235493;
+  /* text-align: center; */
+} 
+

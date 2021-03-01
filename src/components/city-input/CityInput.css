@@ -1,8 +1,9 @@
 .city-input {
-  width: 50%;
-  display: inline-block;
+  display: flex;
+  align-items: baseline;  
+  /* width: 50%; */
   padding: 4px; 
-  margin-left: -20px;
+  /* margin-left: -20px; */
   border: 4px solid #fff;
   border-radius: 4px;
 }

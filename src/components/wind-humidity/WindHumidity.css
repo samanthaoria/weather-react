@@ -1,8 +1,10 @@
+
 .wind-humidity {
   color: #235493;
   list-style: none;
   font-family: "PT Serif", serif;
   text-align: right;
-  margin-top: -140px;
-  margin-right: 430px;
+  margin-top: -280px;
+  margin-right: 20px;
+  padding: 20px;
 }

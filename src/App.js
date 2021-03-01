@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -8,10 +7,10 @@ import { CurrentHighLow } from "./components/current-high-low/CurrentHighLow";
 import { CurrentItems } from "./components/current-items/CurrentItems";
 import { PrecipitationWind } from "./components/precipitation-wind/PrecipitationWind";
 import { WindHumidity } from "./components/wind-humidity/WindHumidity";
-import { FormContainer } from "./components/form-container/FormContainer";
+import { CityFormContainer } from "./components/city-form-container/CityFormContainer";
 import { BottomPage } from "./components/bottom-page/BottomPage";
-
-
+import { WeatherIcon } from "./components/weather-icon/WeatherIcon";
+import { Forecast } from "./components/forecast/Forecast";
 
 export default function App(props) {
   // const [ready, setReady] = useState(false);
@@ -39,12 +38,11 @@ export default function App(props) {
     setLowTemp(response.data.main.temp_min);
     setImage(response.data.weather[0].icon);
     setCelsius(response.data.main.temp);
-    setFahrenheit((response.data.main.temp) * 9 / 5 + 32);
+    setFahrenheit((response.data.main.temp * 9) / 5 + 32);
     setDate(new Date());
 
-
     // setReady(true);
-    console.log(response.data);
+    // console.log(response.data);
   }
 
   function search(city) {
@@ -65,23 +63,46 @@ export default function App(props) {
     return (
       <div className="App">
         <div className="container">
-          <FormContainer onCityChange={setCity} />
-          <div className="form-container">
-            <h1 id="city"> {city} </h1>
-            <div className="degrees-currentdaytogether">
-              <h2 className="light-blue italic">
-                {" "}
-                <FormattedDate date={date} />{" "}
-              </h2>
-              <CurrentItems image={image} temperature={temperature} celsius={celsius} fahrenheit={fahrenheit} />
-            </div>
-            <ul className="wind-humidity">
-              <div className="bold italic">
-                <WindHumidity skycondition={sky} feelslike={feelslike} />
-                <CurrentHighLow hightemp={highTemp} lowtemp={lowTemp} />
-                <PrecipitationWind humidity={humidity} wind={wind} />
+          <CityFormContainer onCityChange={setCity} />
+          <div className="data-container">
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                justifyContent: "space-between",
+              }}
+            >
+              <div className="city-data">
+                <div>
+                  <span id="city"> {city} </span>
+                  <h2 className="light-blue italic">
+                    <FormattedDate date={date} />
+                  </h2>
+                </div>
+                <div className="degrees-currentdaytogether">
+                  <div style={{ display: "flex" }}>
+                    <WeatherIcon image={image} />
+                  </div>
+                  <CurrentItems
+                    temperature={temperature}
+                    celsius={celsius}
+                    fahrenheit={fahrenheit}
+                  />
+                </div>
               </div>
-            </ul>
+              <div className="weather-data">
+                <ul className="wind-humidity">
+                  <div className="bold italic">
+                    <WindHumidity skycondition={sky} feelslike={feelslike} />
+                    <CurrentHighLow hightemp={highTemp} lowtemp={lowTemp} />
+                    <PrecipitationWind humidity={humidity} wind={wind} />
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="forecast-data">
+            <Forecast city={city} />
           </div>
         </div>
         <div>
