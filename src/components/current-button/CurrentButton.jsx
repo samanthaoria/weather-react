@@ -4,14 +4,8 @@ import axios from "axios";
 
 export const CurrentButton = (props) => {
   function onClick() {
-    const apiKey = "a1244480e7949adfd659149b4a160e1f";
-    const urlApi = `https://api.openweathermap.org/data/2.5/weather?lat=${props.latitude}&lon=${props.longitude}&appid=${apiKey}&units=metric`;
-    // let urlApi = `https://api.openweathermap.org/data/2.5/weather?lat=${props.latitude}&lon=${props.longitude}&appid=${apiKey}&units=metric`;
-    axios.get(urlApi).then(props.onWeather);
-    const forecastUrlApi = `https://api.openweathermap.org/data/2.5/forecast?lat=${props.latitude}&lon=${props.longitude}&appid=${apiKey}&units=metric`;
-    axios.get(forecastUrlApi).then(props.onForecast);
-  } 
-
+    props.getCurrentLocation();
+  }
 
   return (
     <button

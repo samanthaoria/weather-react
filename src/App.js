@@ -12,8 +12,9 @@ import { BottomPage } from "./components/bottom-page/BottomPage";
 import { WeatherIcon } from "./components/weather-icon/WeatherIcon";
 import { Forecast } from "./components/forecast/Forecast";
 
-export default function App(props) {
-  // const [ready, setReady] = useState(false);
+const apiKey = "a1244480e7949adfd659149b4a160e1f";
+
+export default function App() {
   const [temperature, setTemperature] = useState(0);
   const [city, setCity] = useState("Amsterdam");
   const [wind, setWind] = useState("null");
@@ -26,12 +27,9 @@ export default function App(props) {
   const [date, setDate] = useState(0);
   const [celsius, setCelsius] = useState(0);
   const [fahrenheit, setFahrenheit] = useState(0);
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
 
   function handleResponse(response) {
     setTemperature(response.data.main.temp);
-    setCity(response.data.name);
     setWind(response.data.wind.speed);
     setHumidity(response.data.main.humidity);
     setSky(response.data.weather[0].main);
@@ -44,59 +42,40 @@ export default function App(props) {
     setDate(new Date());
   }
 
-  function onWeather(weatherData) {
-    // dados da API weather
-    setTemperature(weatherData.data.main.temp);
-    setCity(weatherData.data.name);
-    setWind(weatherData.data.wind.speed);
-    setHumidity(weatherData.data.main.humidity);
-    setSky(weatherData.data.weather[0].main);
-    setFeelsLike(weatherData.data.main.feels_like);
-    setHighTemp(weatherData.data.main.temp_max);
-    setLowTemp(weatherData.data.main.temp_min);
-    setImage(weatherData.data.weather[0].icon);
-    setCelsius(weatherData.data.main.temp);
-    setFahrenheit((weatherData.data.main.temp * 9) / 5 + 32);
-    setLatitude(weatherData.data.city.coord.lat);
-    setLongitude(weatherData.data.city.coord.lon);
+  function getCurrentLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((location) => {
+        searchByLatLong(location.coords.latitude, location.coords.longitude);
+      });
+    }
   }
 
-  function onForecast(forecastData) {
-    // dados da API forecast
-    setTemperature(forecastData.data.main.temp);
-    setCity(forecastData.data.name);
-    setWind(forecastData.data.wind.speed);
-    setHumidity(forecastData.data.main.humidity);
-    setSky(forecastData.data.weather[0].main);
-    setFeelsLike(forecastData.data.main.feels_like);
-    setHighTemp(forecastData.data.main.temp_max);
-    setLowTemp(forecastData.data.main.temp_min);
-    setImage(forecastData.data.weather[0].icon);
-    setCelsius(forecastData.data.main.temp);
-    setFahrenheit((forecastData.data.main.temp * 9) / 5 + 32);
-    setLatitude(forecastData.data.city.coord.lat);
-    setLongitude(forecastData.data.city.coord.lon);
+  function searchByLatLong(lat, long) {
+    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then((response) => {
+      setCity(response.data.name);
+      handleResponse(response);
+    });
   }
 
-  function search(city) {
-    const apiKey = "a1244480e7949adfd659149b4a160e1f";
+  function searchByCity(city) {
+    setCity(city);
     const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
 
   useEffect(() => {
-    search(city);
-  }, [city]);
-
-  useEffect(() => {
-    search(city);
+    searchByCity(city);
   }, []);
 
   if (date) {
     return (
       <div className="App">
         <div className="container">
-          <CityFormContainer onCityChange={setCity} city={city} latitude={latitude} longitude={longitude} />
+          <CityFormContainer
+            onCityChange={searchByCity}
+            getCurrentLocation={getCurrentLocation}
+          />
           <div className="data-container">
             <div
               style={{

@@ -3,7 +3,6 @@
   margin: 0 auto;
 }
 
-
 h2 {
   font-size: 15px;
   text-align: left;
@@ -36,16 +35,11 @@ h2 {
 .city-data {
   display: flex;
   flex-direction: column;
-
 }
 
 .weather-data {
   display: flex;
   margin-top: 40px;
-}
-
-.degrees-currentdaytogether {
-  margin: 0 auto;
 }
 
 .temperature-value {
@@ -62,7 +56,6 @@ h2 {
   font-size: 14px;
   font-style: italic;
 }
-
 
 .currently-high-low {
   font-family: "PT Sans", sans-serif;
@@ -82,7 +75,6 @@ h2 {
   list-style: none;
   font-family: "PT Serif", serif;
   text-align: right;
- 
 }
 
 .sky-condition {
@@ -91,7 +83,6 @@ h2 {
 
 .result-sky-condition {
   color: #2a73d3;
-  
 }
 
 .precipitation-adjust {
