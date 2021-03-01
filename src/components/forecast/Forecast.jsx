@@ -11,7 +11,7 @@ export const Forecast = (props) => {
   function handleForecastResponse(response) {
     setForecast(response.data);
     setLoaded(true);
-    // console.log(response.data)
+    console.log(response.data)
   }
 
   if (loaded && props.city === forecast.city.name) {

@@ -4,7 +4,7 @@ import { CityInput } from "../city-input/CityInput";
 import { CurrentButton } from "../current-button/CurrentButton";
 import { SearchButton } from "../search-button/SearchButton";
 
-export const CityForm = ({ onCityChange }) => {
+export const CityForm = ({ onCityChange, onWeather, onForecast, city }) => {
   const [cityValue, setCityValue] = useState("");
   return (
     <div className="form-group city-form-group">
@@ -26,13 +26,7 @@ export const CityForm = ({ onCityChange }) => {
         Search
       </button>
 
-      <button
-        type="submit"
-        className="btn btn-primary current-button"
-        id="btn-current"
-      >
-        📍Current
-      </button>
+     <CurrentButton onWeather={onWeather} onForecast={onForecast}/>
     </div>
   );
 };

@@ -26,6 +26,8 @@ export default function App(props) {
   const [date, setDate] = useState(0);
   const [celsius, setCelsius] = useState(0);
   const [fahrenheit, setFahrenheit] = useState(0);
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
 
   function handleResponse(response) {
     setTemperature(response.data.main.temp);
@@ -40,9 +42,40 @@ export default function App(props) {
     setCelsius(response.data.main.temp);
     setFahrenheit((response.data.main.temp * 9) / 5 + 32);
     setDate(new Date());
+  }
 
-    // setReady(true);
-    // console.log(response.data);
+  function onWeather(weatherData) {
+    // dados da API weather
+    setTemperature(weatherData.data.main.temp);
+    setCity(weatherData.data.name);
+    setWind(weatherData.data.wind.speed);
+    setHumidity(weatherData.data.main.humidity);
+    setSky(weatherData.data.weather[0].main);
+    setFeelsLike(weatherData.data.main.feels_like);
+    setHighTemp(weatherData.data.main.temp_max);
+    setLowTemp(weatherData.data.main.temp_min);
+    setImage(weatherData.data.weather[0].icon);
+    setCelsius(weatherData.data.main.temp);
+    setFahrenheit((weatherData.data.main.temp * 9) / 5 + 32);
+    setLatitude(weatherData.data.city.coord.lat);
+    setLongitude(weatherData.data.city.coord.lon);
+  }
+
+  function onForecast(forecastData) {
+    // dados da API forecast
+    setTemperature(forecastData.data.main.temp);
+    setCity(forecastData.data.name);
+    setWind(forecastData.data.wind.speed);
+    setHumidity(forecastData.data.main.humidity);
+    setSky(forecastData.data.weather[0].main);
+    setFeelsLike(forecastData.data.main.feels_like);
+    setHighTemp(forecastData.data.main.temp_max);
+    setLowTemp(forecastData.data.main.temp_min);
+    setImage(forecastData.data.weather[0].icon);
+    setCelsius(forecastData.data.main.temp);
+    setFahrenheit((forecastData.data.main.temp * 9) / 5 + 32);
+    setLatitude(forecastData.data.city.coord.lat);
+    setLongitude(forecastData.data.city.coord.lon);
   }
 
   function search(city) {
@@ -63,7 +96,7 @@ export default function App(props) {
     return (
       <div className="App">
         <div className="container">
-          <CityFormContainer onCityChange={setCity} />
+          <CityFormContainer onCityChange={setCity} city={city} latitude={latitude} longitude={longitude} />
           <div className="data-container">
             <div
               style={{

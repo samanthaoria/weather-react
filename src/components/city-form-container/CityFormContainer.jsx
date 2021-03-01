@@ -2,8 +2,8 @@ import React from "react";
 import { CityForm } from "../city-form/CityForm";
 import "./CityFormContainer.css";
 
-export const CityFormContainer = ({ onCityChange }) => (
+export const CityFormContainer = (props) => (
   <div className="city-form-container">
-    <CityForm onCityChange={onCityChange} />
+    <CityForm {...props} />
   </div>
 );
